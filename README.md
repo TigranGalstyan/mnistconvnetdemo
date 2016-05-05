@@ -6,7 +6,7 @@
 ### Try Online
 ---
 
-http://htmlpreview.github.io/?https://github.com/TigranGalstyan/mnistconvnetdemo/blob/master/index.html
+[Demo](https://rawgit.com/TigranGalstyan/mnistconvnetdemo/master/index.html)
 
 > HINT: Try not to use the uppermost part of canvas to get better accuracy (I don't know why yet, but I hope I'll figure that out). And also You better write in the center of the canvas. My apologies
 
