@@ -45,7 +45,6 @@ for(var i = 0; i < mnistTrain.length; ++i) {
 	        mnistTrain[i].set(yc,xc,1,p[ix]/255.0 - 0.5);
 	    }
 	}
-//	console.log(i + "th done");
 }
 
 var mnistValidation = mnistTrain.splice(0,mnistTrain.length*valsetsize);
@@ -85,7 +84,6 @@ var endindex = min(mnistTrain.length,epochlength);
 for(var e = 1; e <= numepochs; ++e) {
 	for(var i = startindex; i < endindex ; ++i) {
 		trainer.train(mnistTrain[i], trainLables[i]);
-	//	console.log(i + "th done");
 	}
 	startindex = (endindex == mnistTrain.length) ? 0 : endindex;
 	endindex = min(startindex + epochlength, mnistTrain.length);
@@ -140,6 +138,8 @@ for(var i = 0; i < mnistValidation.length; ++i) {
 	rightanswers += (prediction == validationLabels[i] ) ? 1 : 0;
 }
 console.log("Accuracy after of the loaded model is " + (rightanswers*100/(mnistValidation) ) + " %");
+
+/////////  Uncomment this if You want to predict test data from Kaggle contest
 /*
 console.log('Predicting Unknown Data...');
 var outputcsv = 'ImageId,Label\n';
