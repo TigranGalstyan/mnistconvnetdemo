@@ -8,6 +8,8 @@
 
 preview.c9users.io/galstyantik/angular/mnistconvnetdemo/index.html
 
+> HINT: Try not to use the uppermost part of canvas to get better accuracy (I don't know why yet, but I hope I'll figure that out)
+
 ### Training Locally
 ---
 	git clone "https://github.com/TigranGalstyan/mnistconvnetdemo.git"
