@@ -1,0 +1,44 @@
+button {
+	margin-top: 3px;
+	margin-bottom: 6px;
+    margin-left: 260px;
+    font-size : 30px;
+}
+.container {
+    overflow: hidden;
+}
+.canvas{
+    border: 2px solid #ddd;
+    width: 560px;
+    height: 560px;
+}
+.left {
+    float: left;
+}
+.right {
+    margin-left: 560px;
+}
+.probabilities > li {
+    margin-bottom: 8px;
+    background-color: #eee;
+    list-style: none;
+    display: block;
+    position: relative;
+    height: 32px;
+    line-height: 32px;
+}
+.fill {
+    height: 32px;
+    background-color: green;
+}
+.label {
+    width: 20px;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    font-weight: bold;
+    z-index: 10;
+}
+.wrap1{
+	overflow: auto;
+}
