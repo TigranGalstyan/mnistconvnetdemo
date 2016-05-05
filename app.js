@@ -1,8 +1,20 @@
+if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame = function(callback, element) {
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+          timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+    };
+}
+  
 var app = angular.module("Calc", []);
-app.directive("drawing", function($http){
+app.directive("drawing", function($window, $http){
   return {
     restrict: "A",
     link: function(scope, element){
+      var digits = [];
       var ctx = element[0].getContext('2d');
       // variable that decides if something should be drawn on mousemove
       var drawing = false;
@@ -11,8 +23,14 @@ app.directive("drawing", function($http){
       // the last coordinates before the current move
       var lastX;
       var lastY;
+      
+      for(var i = 0; i <= 9; ++i) {
+        var id = 'p' + i;
+        digits[i] = document.getElementById(id);
+      }
 
-      setInterval(update, 50);
+      $window.requestAnimationFrame(update);
+      
     //  update_probs();
       element.bind('mousedown', function(event){
         if(event.offsetX!==undefined){
@@ -28,6 +46,7 @@ app.directive("drawing", function($http){
 
         drawing = true;
       });
+      
       element.bind('mousemove', function(event){
         if(drawing){
           // get current mouse position
@@ -57,8 +76,8 @@ app.directive("drawing", function($http){
         console.log("reset called");
         element[0].width = element[0].width; 
       }
+      
       function update() {
-
         var imgData=ctx.getImageData(0,0,560,560);
         // invert colors
         var imd = new Array(560*560);
@@ -82,10 +101,11 @@ app.directive("drawing", function($http){
 
         update_probabilities();
 
-        for(var i = '0'; i <= '9'; ++i) {
-          var id = "p" + i;
-          document.getElementById(id).style.width = ps[i-'0']*100 + '%';
+        for(var i = 0; i <= 9; ++i) {
+          digits[i] = ps[i-'0']*100 + '%';
         }
+        
+        $window.requestAnimationFrame(update);
       }
       function update_probabilities() {
         var net = new convnetjs.Net(); 
