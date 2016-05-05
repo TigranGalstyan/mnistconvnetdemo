@@ -17,6 +17,7 @@ button {
 }
 .right {
     margin-left: 560px;
+    margin-right: 30px;
 }
 .probabilities > li {
     margin-bottom: 8px;
