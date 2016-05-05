@@ -4,9 +4,9 @@ var image_dimension = 28;
 var valsetsize = 0.2;
 var num_classes = 10;
 var numepochs = 100;
-var trainFilename = '../mnist/train.csv';
-var testFilename = '../mnist/test.csv';
-var dumpFilename = 'models/net';
+var trainFilename = 'Path to Mnist Train file (in Kaggle Format)';
+var testFilename = 'Path to Mnist Test file (in Kaggle Format)'
+var dumpFilePath = 'models/net';
 var epochlength = 10000;
 
 var min = function(x, y) {
@@ -75,7 +75,7 @@ console.log("Saving Trained Model...");
 
 var json = net.toJSON();
 var str = JSON.stringify(json);
-fs.writeFileSync(dumpFilename+'.json', str );
+fs.writeFileSync(dumpFilePath+'.json', str );
 		
 console.log("Training NeuralNet...");
 
@@ -112,7 +112,7 @@ for(var e = 1; e <= numepochs; ++e) {
 		console.log("Saving Trained Model...");
 		var json = net.toJSON();
 		var str = JSON.stringify(json);
-		var tmpname = dumpFilename + e + 'e.json';
+		var tmpname = dumpFilePath + e + 'e.json';
 		fs.writeFileSync(tmpname, str );
 	}
 
