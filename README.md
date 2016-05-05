@@ -5,7 +5,8 @@
 
 ### Try Online
 ---
-http://bit.ly/24vmTPz
+
+preview.c9users.io/galstyantik/angular/mnistconvnetdemo/index.html
 
 ### Training Locally
 ---
