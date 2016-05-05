@@ -102,7 +102,7 @@ app.directive("drawing", function($window, $http){
         update_probabilities();
 
         for(var i = 0; i <= 9; ++i) {
-          digits[i] = ps[i-'0']*100 + '%';
+          digits[i].style.width = ps[i] * 100 + '%';
         }
         
         $window.requestAnimationFrame(update);
