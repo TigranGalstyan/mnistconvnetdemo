@@ -13,12 +13,14 @@ var app = angular.module("Calc", []);
 app.directive("drawing", function($window, $http){
   return {
     restrict: "A",
-    link: function(scope, element){
-      var digits = [];
-      var right = 559;
-      var left = 0;
-      var upper = 0;
-      var down = 559;
+    link: function(scope, element) {
+
+      scope.digits = new Array(10);
+
+      for(var i = 0; i < 10; ++i ){ 
+      	scope.digits[i] = "10%";
+      }
+
       var ctx = element[0].getContext('2d');
       // variable that decides if something should be drawn on mousemove
       var drawing = false;
@@ -28,10 +30,6 @@ app.directive("drawing", function($window, $http){
       var lastX;
       var lastY;
       
-      for(var i = 0; i <= 9; ++i) {
-        var id = 'p' + i;
-        digits[i] = document.getElementById(id);
-      }
 
       $window.requestAnimationFrame(update);
       
@@ -77,7 +75,6 @@ app.directive("drawing", function($window, $http){
 
       // canvas reset
       scope.reset = function(){
-        console.log("reset called");
         element[0].width = element[0].width; 
       }
       
@@ -89,6 +86,26 @@ app.directive("drawing", function($window, $http){
           imd[i/4] = imgData.data[i+3 ]/255.0;
 
         }
+        /*
+        var right = 0;
+        var left = 559;
+        var up = 559;
+        var down = 0;
+        for(var i = 0; i < 560; ++i ){
+        	for(var j = 0; j < 560; ++j ) {
+        		if(imd[i*560 +j] != 0) {
+        			right = ( right < j? j : righ);
+        			left = ( left > j? j : left);
+        			down = (down < i? i : down);
+        			up = (up > i? i: up);
+        		}
+        	}
+        }
+        console.log(left,right);
+        if(left > right) {
+        	return;
+        }
+        */
         for(var i = 0; i < 28; ++i) {
           bitmap[i] = new Array(28);
           for(var j = 0; j < 28; ++j) {
@@ -105,8 +122,10 @@ app.directive("drawing", function($window, $http){
         update_probabilities();
 
         for(var i = 0; i <= 9; ++i) {
-          digits[i].style.width = ps[i] * 100 + '%';
+          scope.digits[i] = ps[i] * 100 + '%';
         }
+
+        scope.$apply();
         
         $window.requestAnimationFrame(update);
       }
