@@ -30,6 +30,9 @@ app.directive("drawing", function($window, $http){
       var lastX;
       var lastY;
       
+      
+      var net = new convnetjs.Net(); 
+      net.fromJSON(netstr);
 
       $window.requestAnimationFrame(update);
       
@@ -130,8 +133,6 @@ app.directive("drawing", function($window, $http){
         $window.requestAnimationFrame(update);
       }
       function update_probabilities() {
-        var net = new convnetjs.Net(); 
-        net.fromJSON(netstr);
         var sample = new convnetjs.Vol(28,28,1);
         for(var xc=0;xc<28;xc++) {
           for(var yc=0;yc<28;yc++) {
