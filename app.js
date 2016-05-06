@@ -15,6 +15,10 @@ app.directive("drawing", function($window, $http){
     restrict: "A",
     link: function(scope, element){
       var digits = [];
+      var right = 559;
+      var left = 0;
+      var upper = 0;
+      var down = 559;
       var ctx = element[0].getContext('2d');
       // variable that decides if something should be drawn on mousemove
       var drawing = false;
@@ -98,7 +102,6 @@ app.directive("drawing", function($window, $http){
             bitmap[i][j]=pixel;
           }
         }
-
         update_probabilities();
 
         for(var i = 0; i <= 9; ++i) {
@@ -130,7 +133,7 @@ app.directive("drawing", function($window, $http){
         i = 0
         for(var i = 0; i < 1; i += 0.02) {
           ctx.beginPath();
-          ctx.arc(cX + (lX - cX) * i, cY + (lY - cY) * i, 12, 0, 2 * Math.PI, false);
+          ctx.arc(cX + (lX - cX) * i, cY + (lY - cY) * i, 25, 0, 2 * Math.PI, false);
           ctx.strokeStyle = "#000000";
           ctx.fill();
         }
