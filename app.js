@@ -89,26 +89,6 @@ app.directive("drawing", function($window, $http){
           imd[i/4] = imgData.data[i+3 ]/255.0;
 
         }
-        /*
-        var right = 0;
-        var left = 559;
-        var up = 559;
-        var down = 0;
-        for(var i = 0; i < 560; ++i ){
-        	for(var j = 0; j < 560; ++j ) {
-        		if(imd[i*560 +j] != 0) {
-        			right = ( right < j? j : righ);
-        			left = ( left > j? j : left);
-        			down = (down < i? i : down);
-        			up = (up > i? i: up);
-        		}
-        	}
-        }
-        console.log(left,right);
-        if(left > right) {
-        	return;
-        }
-        */
         for(var i = 0; i < 28; ++i) {
           bitmap[i] = new Array(28);
           for(var j = 0; j < 28; ++j) {
@@ -145,11 +125,6 @@ app.directive("drawing", function($window, $http){
         }
       }
       function draw(lX, lY, cX, cY){
-        //console.time('t')
-        //  ctx.moveTo(lX,lY);
-          // to
-        //  ctx.lineTo(cX,cY);
-        // color
         i = 0
         for(var i = 0; i < 1; i += 0.02) {
           ctx.beginPath();
