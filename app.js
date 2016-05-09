@@ -105,7 +105,7 @@ app.directive("drawing", function($window, $http){
         update_probabilities();
 
         for(var i = 0; i <= 9; ++i) {
-          scope.digits[i] = ps[i] * 100 + '%';
+          scope.digits[i] = (ps[i] * 100).toFixed(3) + '%';
         }
 
         scope.$apply();
