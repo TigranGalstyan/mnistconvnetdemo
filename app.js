@@ -83,7 +83,6 @@ app.directive("drawing", function ($window, $http) {
         element[0].width = element[0].width;
       }
       
-      scope.update_probabilities = update_probabilities;
       element.bind('touchstart',function (event) {
         lastX = event.touches[0].clientX;
         lastY = event.touches[0].clientY;
@@ -97,6 +96,9 @@ app.directive("drawing", function ($window, $http) {
           // set current coordinates to last one
           lastX = currentX;
           lastY = currentY;
+      });
+      element.bind('touchend',function(event) {
+          update_probabilities();
       });
 
       function update() {
