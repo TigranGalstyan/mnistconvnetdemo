@@ -14,7 +14,7 @@
 ---
 	git clone "https://github.com/TigranGalstyan/mnistconvnetdemo.git"
 	cd mnistconvnetdemo
-	node trainmnist.js
+	node convnet/trainmnist.js
 
 ##### You may need to install convnetjs
 ---
