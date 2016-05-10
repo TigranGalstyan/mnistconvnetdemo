@@ -1,97 +1,106 @@
 <!DOCTYPE html>
 
 <head>
-	<meta charset="utf-8">
-	<title>Mnist Convnet Demo</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="models/net50e.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-	<script src="app.js"></script>
-	<script src="convnet/convnet-min.js"></script>
+    <meta charset="utf-8">
+    <title>Mnist Convnet Demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="models/net50e.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="convnet/convnet-min.js"></script>
 </head>
 
-<body ng-app="Calc" >
-	<div class="container">
-		<div class="canvas left">
-			<canvas drawing height="560" width="560" class="drawarea"></canvas>
-		</div>
-		<div class="right">
-			<ul class="probabilities">
-			  <li>
-					<div class="label">0</div>
+<body ng-app="Calc">
+    <div class="container">
+        <div class="canvas left">
+            <canvas drawing height="560" width="560" class="drawarea"></canvas>
+            <canvas height="28" width="28" id="preview"></canvas>
+        </div>
+        <div class="right">
+            <ul class="probabilities">
+                <li>
+                    <div class="label">0</div>
 
-					<div class="fill" id="p0" style="width: {{digits[0]}}"></div>
+                    <div class="fill" id="p0" style="width: {{digits[0]}}"></div>
 
-				</li>
-				<li>
-					<div class="label" >1</div>
+                </li>
+                <li>
+                    <div class="label">1</div>
 
-					<div class="fill" id="p1" style="width: {{digits[1]}}"></div>
+                    <div class="fill" id="p1" style="width: {{digits[1]}}"></div>
 
-				</li>
-				<li>
-					<div class="label">2</div>
+                </li>
+                <li>
+                    <div class="label">2</div>
 
-					<div class="fill" id="p2" style="width: {{digits[2]}}"></div>
+                    <div class="fill" id="p2" style="width: {{digits[2]}}"></div>
 
-				</li>
-				<li>
-					<div class="label">3</div>
+                </li>
+                <li>
+                    <div class="label">3</div>
 
-					<div class="fill" id="p3" style="width: {{digits[3]}}"></div>
+                    <div class="fill" id="p3" style="width: {{digits[3]}}"></div>
 
-				</li>
-				<li>
-					<div class="label">4</div>
+                </li>
+                <li>
+                    <div class="label">4</div>
 
-					<div class="fill" id="p4" style="width: {{digits[4]}}"></div>
+                    <div class="fill" id="p4" style="width: {{digits[4]}}"></div>
 
-				</li>
-				<li>
-					<div class="label">5</div>
+                </li>
+                <li>
+                    <div class="label">5</div>
 
-					<div class="fill" id="p5" style="width: {{digits[5]}}"></div>
+                    <div class="fill" id="p5" style="width: {{digits[5]}}"></div>
 
-				</li>
-				<li>
-					<div class="label">6</div>
+                </li>
+                <li>
+                    <div class="label">6</div>
 
-					<div class="fill" id="p6" style="width: {{digits[6]}}"></div>
+                    <div class="fill" id="p6" style="width: {{digits[6]}}"></div>
 
-				</li>
-				<li>
-					<div class="label">7</div>
+                </li>
+                <li>
+                    <div class="label">7</div>
 
-					<div class="fill" id="p7" style="width: {{digits[7]}}"></div>
+                    <div class="fill" id="p7" style="width: {{digits[7]}}"></div>
 
-				</li>
-				<li>
-					<div class="label">8</div>
+                </li>
+                <li>
+                    <div class="label">8</div>
 
-					<div class="fill" id="p8" style="width: {{digits[8]}}"></div>
+                    <div class="fill" id="p8" style="width: {{digits[8]}}"></div>
 
-				</li>
-				<li>
-					<div class="label">9</div>
+                </li>
+                <li>
+                    <div class="label">9</div>
 
-					<div class="fill" id="p9" style="width: {{digits[9]}}"></div>
+                    <div class="fill" id="p9" style="width: {{digits[9]}}"></div>
 
-				</li>
-			</ul>
-		</div>
-		<a href="https://github.com/TigranGalstyan/mnistconvnetdemo"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
-	</div>
-	<div>
-		<button ng-click="reset()">Reset</button>
-	</div>
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		ga('create', 'UA-77370163-1', 'auto');
-		ga('send', 'pageview');
-	</script>
+                </li>
+            </ul>
+        </div>
+        <a href="https://github.com/TigranGalstyan/mnistconvnetdemo"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
+                alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    </div>
+    <div>
+        <button ng-click="reset()">Reset</button>
+    </div>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-77370163-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 
 </body>
 
