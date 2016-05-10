@@ -43,3 +43,18 @@ button {
 .wrap1{
 	overflow: auto;
 }
+#preview {
+    width: 84px;
+    height: 84px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(255,127,0,0.5);
+}
+.ov {
+        position: absolute;
+    top: 10px;
+    background-color: rgba(255, 0, 0, 0);
+    pointer-events: none;
+}
