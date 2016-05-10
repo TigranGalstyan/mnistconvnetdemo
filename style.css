@@ -1,7 +1,5 @@
 button {
-    margin-top: 3px;
-    margin-bottom: 6px;
-    margin-left: 260px;
+    margin-top:10px;
     font-size: 30px;
 }
 
@@ -67,4 +65,4 @@ button {
     top: 10px;
     background-color: rgba(255, 0, 0, 0);
     pointer-events: none;
-}}
+}
