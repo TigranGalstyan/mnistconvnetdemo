@@ -124,8 +124,8 @@ app.directive("drawing", function ($window, $http) {
           }
         }
 
-        var W = ((right - left + 28 + 27) / 28) | 0,
-          H = ((bottom - top + 28 + 27) / 28) | 0;
+        var W = ((right - left + 8 * 28 - 1) / 28) | 0,
+          H = ((bottom - top + 8 * 28 - 1) / 28) | 0;
         W = H = Math.max(W, H);
         var cx = (left + right) >> 1;
         var cy = (top + bottom) >> 1;
