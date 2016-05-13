@@ -98,10 +98,13 @@ app.directive("drawing", function ($window, $http) {
           lastY = currentY;
       });
       element.bind('touchend',function(event) {
-          update_probabilities();
+          update();
       });
 
-      function update() {
+      function update(force) {
+        if(!scope.isMobile && !force) {
+          return;
+        }
         var imgData = ctx.getImageData(0, 0, 560, 560);
         // invert colors
         var imd = new Array(560 * 560);
@@ -159,8 +162,8 @@ app.directive("drawing", function ($window, $http) {
         }
 
         preview.putImageData(previewImgData, 0, 0);
-        if(!scope.isMobile)
-          update_probabilities();
+        
+        update_probabilities();
 
         for (var i = 0; i <= 9; ++i) {
           scope.digits[i] = (ps[i] * 100).toFixed(3) + '%';
