@@ -40,7 +40,8 @@ app.directive("drawing", function ($window, $http) {
       var net = new convnetjs.Net();
       net.fromJSON(netstr);
 
-      $window.requestAnimationFrame(update);
+      //$window.requestAnimationFrame(update);
+      setInterval(update, 200);
       element.bind('mousedown', function (event) {
         if (event.offsetX !== undefined) {
           lastX = event.offsetX;
@@ -171,7 +172,7 @@ app.directive("drawing", function ($window, $http) {
 
         scope.$apply();
 
-        $window.requestAnimationFrame(update);
+        //$window.requestAnimationFrame(update);
       }
       function update_probabilities() {
         var sample = new convnetjs.Vol(28, 28, 1);
@@ -187,7 +188,7 @@ app.directive("drawing", function ($window, $http) {
       }
       function draw(lX, lY, cX, cY) {
         i = 0
-        for (var i = 0; i < 1; i += 0.1) {
+        for (var i = 0; i < 1; i += 0.05) {
           ctx.beginPath();
           ctx.arc(cX + (lX - cX) * i, cY + (lY - cY) * i, 33, 0, 2 * Math.PI, false);
           ctx.fillStyle = "#00000055";
