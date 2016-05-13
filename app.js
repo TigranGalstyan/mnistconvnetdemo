@@ -98,11 +98,11 @@ app.directive("drawing", function ($window, $http) {
           lastY = currentY;
       });
       element.bind('touchend',function(event) {
-          update();
+          update(true);
       });
 
       function update(force) {
-        if(!scope.isMobile && !force) {
+        if(scope.isMobile && !force) {
           return;
         }
         var imgData = ctx.getImageData(0, 0, 560, 560);
@@ -166,7 +166,7 @@ app.directive("drawing", function ($window, $http) {
         update_probabilities();
 
         for (var i = 0; i <= 9; ++i) {
-          scope.digits[i] = (ps[i] * 100).toFixed(3) + '%';
+          scope.digits[i] = (ps[i]).toFixed(3);
         }
 
         scope.$apply();
@@ -187,7 +187,7 @@ app.directive("drawing", function ($window, $http) {
       }
       function draw(lX, lY, cX, cY) {
         i = 0
-        for (var i = 0; i < 1; i += 0.2) {
+        for (var i = 0; i < 1; i += 0.1) {
           ctx.beginPath();
           ctx.arc(cX + (lX - cX) * i, cY + (lY - cY) * i, 33, 0, 2 * Math.PI, false);
           ctx.fillStyle = "#00000055";

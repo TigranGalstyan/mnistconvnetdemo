@@ -35,6 +35,8 @@ button {
 .fill {
     height: 32px;
     background-color: green;
+    transform-origin: left center;
+    transition: 0.2s transform;
 }
 
 .label {
