@@ -6,7 +6,7 @@
 ### Try Online
 ---
 
-[Demo](https://rawgit.com/TigranGalstyan/mnistconvnetdemo/master/index.html)
+[Demo](https://tigrangalstyan.github.io/mnistconvnetdemo/)
 
 ### Training Locally
 ---
